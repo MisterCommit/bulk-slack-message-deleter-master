@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+
+  /* Visible focus for keyboard users, no blue */
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-400/90 ring-offset-2 ring-offset-slate-900;
+  }
+
+  /* Ensure links have visible focus */
+  a:focus-visible {
+    @apply rounded-sm;
+  }
+}
