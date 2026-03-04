@@ -50,7 +50,7 @@ export default function Home() {
       const res = await axios.post<{ totalDeleted: number }>(
         "/api/delete-messages",
         data,
-        { headers: { "Content-Type": "application/json" } }
+        { headers: { "Content-Type": "application/json" } },
       );
       setStatus({
         type: "success",
@@ -83,11 +83,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-
-        <p className="mb-6 text-sm text-zinc-300 leading-relaxed">
-          Add a keyword to only delete messages containing that text; leave it
-          empty to delete all your messages in the channel.
-        </p>
 
         <form
           onSubmit={rhfHandleSubmit(onSubmit)}
@@ -310,6 +305,7 @@ export default function Home() {
                 <HelpCircle className="h-4 w-4" aria-hidden />
               </Link>
             </div>
+
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
               <input
@@ -320,6 +316,10 @@ export default function Home() {
                 {...register("keyword")}
               />
             </div>
+            <p className="mb-6 text-sm text-zinc-300 leading-relaxed mt-2">
+              Add a keyword to only delete messages containing that text; leave
+              it empty to delete all your messages in the channel.
+            </p>
             {errors.keyword && (
               <p className="mt-1 text-xs text-red-300" role="alert">
                 {errors.keyword.message}

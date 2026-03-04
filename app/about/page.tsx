@@ -182,6 +182,25 @@ export default function AboutPage() {
                 (case-insensitive) will be deleted.
               </p>
             </div>
+
+            <div
+              id="message-count"
+              className={`scroll-mt-24 pt-1 ${highlightedId === "message-count" ? highlightClass : ""}`}
+            >
+              <h3 className="mb-1 text-sm font-semibold text-zinc-200">
+                Messages per request
+              </h3>
+              <p className="text-sm leading-relaxed text-zinc-300">
+                How many messages Slack returns per API call (between 1 and{" "}
+                <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-emerald-400">
+                  1000
+                </code>
+                ). The default is 1000, which is Slack’s maximum. The app
+                fetches history in batches of this size and deletes your
+                matching messages from each batch. You usually don’t need to
+                change this unless you want smaller batches (e.g. for testing).
+              </p>
+            </div>
           </div>
         </section>
 
