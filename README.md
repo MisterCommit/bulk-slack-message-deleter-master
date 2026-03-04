@@ -57,3 +57,7 @@ This script does not required you to install any app into your workspace.
 If you are non-admin users, you can only delete your own messages.
 
 Even if you are admin users, in 1:1 DMs, you can only delete your own message.
+
+## Thanks
+
+This project was inspired by [slack-message-deleter](https://github.com/huytd/slack-message-deleter) by [huytd](https://github.com/huytd). Thank you for the inspiration.

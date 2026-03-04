@@ -219,7 +219,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <section>
+        <section className="mb-8">
           <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             Technical note
           </h2>
@@ -229,6 +229,33 @@ export default function AboutPage() {
             small server-side API route that receives your form data and
             forwards the requests to Slack. That route does not store the data;
             it only uses it for the delete run and then discards it.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Thanks
+          </h2>
+          <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            This project was inspired by{" "}
+            <a
+              href="https://github.com/huytd/slack-message-deleter"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-amber-600 underline underline-offset-2 hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300"
+            >
+              slack-message-deleter
+            </a>{" "}
+            by{" "}
+            <a
+              href="https://github.com/huytd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-amber-600 underline underline-offset-2 hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300"
+            >
+              huytd
+            </a>
+            . Thank you for the inspiration.
           </p>
         </section>
       </div>
