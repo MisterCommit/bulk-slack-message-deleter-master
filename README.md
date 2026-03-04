@@ -1,4 +1,5 @@
-# Slack Message Deleter
+# Bulk Slack Message Deleter
+<img width="1003" height="842" alt="image" src="https://github.com/user-attachments/assets/0e95ef39-1717-40a1-8a2c-a8a67b9b1080" />
 
 Bulk delete your messages on Slack. Using Slack's public Web API, no workspace app install needed.
 
