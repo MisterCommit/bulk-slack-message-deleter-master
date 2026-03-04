@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { SlackConfig } from "@/app/types";
 
-const MESSAGE_COUNT = 1000;
+const DEFAULT_MESSAGE_COUNT = 1000;
+const MIN_MESSAGE_COUNT = 1;
+const MAX_MESSAGE_COUNT = 1000;
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -31,7 +33,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const { workspace, targetChannelId, currentUserId, token, cookie, keyword } =
+  const { workspace, targetChannelId, currentUserId, token, cookie, keyword, messageCount: rawMessageCount } =
     config;
   if (!workspace || !targetChannelId || !currentUserId || !token || !cookie) {
     return NextResponse.json(
@@ -51,6 +53,11 @@ export async function POST(request: NextRequest) {
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
+  const messageCount = Math.min(
+    MAX_MESSAGE_COUNT,
+    Math.max(MIN_MESSAGE_COUNT, typeof rawMessageCount === "number" && Number.isInteger(rawMessageCount) ? rawMessageCount : DEFAULT_MESSAGE_COUNT)
+  );
+
   let cursor: string | undefined;
   let totalDeleted = 0;
 
@@ -58,7 +65,7 @@ export async function POST(request: NextRequest) {
     const historyParams: Record<string, string> = {
       token,
       channel: targetChannelId,
-      limit: String(MESSAGE_COUNT),
+      limit: String(messageCount),
     };
     if (cursor) {
       historyParams.cursor = cursor;

@@ -15,6 +15,7 @@ import {
   Loader2,
   Trash2,
   HelpCircle,
+  MessageSquare,
 } from "lucide-react";
 import { deleteMessagesSchema, type DeleteMessagesFormData } from "./schema";
 
@@ -39,6 +40,7 @@ export default function Home() {
       token: "",
       cookie: "",
       keyword: "",
+      messageCount: 1000,
     },
   });
 
@@ -252,6 +254,41 @@ export default function Home() {
             {errors.cookie && (
               <p className="mt-1 text-xs text-red-300" role="alert">
                 {errors.cookie.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <div className="mb-1.5 flex items-center gap-1.5">
+              <label
+                htmlFor="messageCount"
+                className="text-xs font-medium text-zinc-300"
+              >
+                Messages per request
+              </label>
+              <Link
+                href="/about#message-count"
+                className="rounded-sm text-zinc-500 transition-colors hover:text-zinc-300 focus-visible:ring-2 focus-visible:ring-amber-400/90 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                aria-label="About messages per request"
+              >
+                <HelpCircle className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
+            <div className="relative">
+              <MessageSquare className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+              <input
+                id="messageCount"
+                type="number"
+                min={1}
+                max={1000}
+                placeholder="1000"
+                className={inputBase}
+                {...register("messageCount", { valueAsNumber: true })}
+              />
+            </div>
+            {errors.messageCount && (
+              <p className="mt-1 text-xs text-red-300" role="alert">
+                {errors.messageCount.message}
               </p>
             )}
           </div>
