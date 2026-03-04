@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header";
@@ -7,6 +7,12 @@ import { themeInitScript } from "./theme-script";
 export const metadata: Metadata = {
   title: "Slack Message Deleter",
   description: "Delete Slack messages containing a specific keyword",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({

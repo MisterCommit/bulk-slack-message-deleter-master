@@ -18,22 +18,22 @@ export default function AboutPage() {
     "rounded-lg bg-amber-500/15 px-4 py-3 -mx-4 ring-2 ring-amber-400/60 transition-all duration-300";
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 px-6 py-8 text-zinc-800 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-zinc-100">
+    <main className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 px-4 py-6 text-zinc-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-zinc-100 sm:px-6 sm:py-8">
       <div className="mx-auto max-w-2xl">
         <h1 className="mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
           About Slack Message Deleter
         </h1>
-        <p className="mb-8 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+        <p className="mb-8 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
           This tool lets you delete your own messages in a Slack channel—either
           all of them or only those containing a specific keyword. Nothing you
           enter is saved or stored anywhere.
         </p>
 
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+          <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             How it works
           </h2>
-          <ol className="list-inside list-decimal space-y-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+          <ol className="list-inside list-decimal space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <li>
               You fill in the form with your Slack workspace details and
               credentials (see below).
@@ -56,10 +56,10 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+          <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             What you need
           </h2>
-          <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+          <p className="mb-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             All of these are used only for the delete run. They are never saved
             in this app, in a database, or in the repository.
           </p>
@@ -69,10 +69,10 @@ export default function AboutPage() {
               id="workspace"
               className={`scroll-mt-24 pt-1 ${highlightedId === "workspace" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Workspace
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 Your Slack workspace hostname, e.g.{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
                   your-company.slack.com
@@ -85,10 +85,10 @@ export default function AboutPage() {
               id="target-channel-id"
               className={`scroll-mt-24 pt-1 ${highlightedId === "target-channel-id" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Target Channel ID
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 The ID of the channel (or DM) whose messages you want to delete.
                 Open that channel in Slack in the browser, then check the URL.
                 It often looks like{" "}
@@ -107,10 +107,10 @@ export default function AboutPage() {
               id="current-user-id"
               className={`scroll-mt-24 pt-1 ${highlightedId === "current-user-id" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Current User ID
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 Your own Slack user ID (starts with{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
                   U
@@ -128,10 +128,10 @@ export default function AboutPage() {
               id="token"
               className={`scroll-mt-24 pt-1 ${highlightedId === "token" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Token
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 A Slack session token (often starts with{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
                   xoxc-
@@ -149,10 +149,10 @@ export default function AboutPage() {
               id="cookie"
               className={`scroll-mt-24 pt-1 ${highlightedId === "cookie" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Cookie
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 The full{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
                   cookie
@@ -169,10 +169,10 @@ export default function AboutPage() {
               id="keyword"
               className={`scroll-mt-24 pt-1 ${highlightedId === "keyword" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Keyword (optional)
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 If you leave this empty, the app will delete all your messages
                 in the chosen channel. If you enter a word or phrase (e.g.{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
@@ -187,10 +187,10 @@ export default function AboutPage() {
               id="message-count"
               className={`scroll-mt-24 pt-1 ${highlightedId === "message-count" ? highlightClass : ""}`}
             >
-              <h3 className="mb-1 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <h3 className="mb-1 text-sm font-semibold text-zinc-800 dark:text-zinc-200">
                 Messages per request
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 How many messages Slack returns per API call (between 1 and{" "}
                 <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-emerald-700 dark:bg-zinc-800 dark:text-emerald-400">
                   1000
@@ -205,11 +205,11 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+          <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             We don’t save anything
           </h2>
-          <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-            <strong className="text-zinc-700 dark:text-zinc-200">No data is stored.</strong> Your
+          <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <strong className="text-zinc-800 dark:text-zinc-200">No data is stored.</strong> Your
             workspace, channel ID, user ID, token, cookie, and keyword are only
             used for the duration of the request. They are sent from your
             browser to our server (to avoid Slack’s CORS restrictions), and the
@@ -220,10 +220,10 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+          <h2 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             Technical note
           </h2>
-          <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+          <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             The form runs in your browser. Because Slack’s API does not allow
             direct browser requests from other origins (CORS), the app uses a
             small server-side API route that receives your form data and
