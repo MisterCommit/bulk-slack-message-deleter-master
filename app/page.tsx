@@ -57,12 +57,16 @@ export default function Home() {
         message: `Done. Total messages deleted: ${res.data.totalDeleted}`,
       });
     } catch (err) {
-      const message =
-        axios.isAxiosError(err) && err.response?.data?.error
-          ? err.response.data.error
-          : err instanceof Error
-            ? err.message
-            : "Network or server error";
+      let message: string;
+      if (axios.isAxiosError(err) && err.response?.data) {
+        const data = err.response.data as { error?: string; totalDeleted?: number };
+        message = data.error ?? err.message;
+        if (err.response.status === 429 && typeof data.totalDeleted === "number") {
+          message += ` (${data.totalDeleted} message${data.totalDeleted === 1 ? "" : "s"} deleted before stopping.)`;
+        }
+      } else {
+        message = err instanceof Error ? err.message : "Network or server error";
+      }
       setStatus({ type: "error", message });
     }
   };

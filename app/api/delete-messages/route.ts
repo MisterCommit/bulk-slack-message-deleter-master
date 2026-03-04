@@ -58,8 +58,11 @@ export async function POST(request: NextRequest) {
     Math.max(MIN_MESSAGE_COUNT, typeof rawMessageCount === "number" && Number.isInteger(rawMessageCount) ? rawMessageCount : DEFAULT_MESSAGE_COUNT)
   );
 
+  const MAX_CONSECUTIVE_FAILURES = 5;
   let cursor: string | undefined;
   let totalDeleted = 0;
+  let consecutiveFailures = 0;
+  let stoppedDueToRateLimit = false;
 
   do {
     const historyParams: Record<string, string> = {
@@ -97,27 +100,49 @@ export async function POST(request: NextRequest) {
     const keywordLower = keyword?.trim().toLowerCase() ?? "";
 
     for (const msg of messages) {
+      if (stoppedDueToRateLimit) break;
       if (msg.user !== currentUserId) continue;
       const text = (msg.text ?? "").toLowerCase();
       const matchesKeyword =
         keywordLower === "" || text.includes(keywordLower);
       if (!matchesKeyword) continue;
-        await delay(500);
-        const deleteRes = await fetch(`https://${workspace}/api/chat.delete`, {
-          method: "POST",
-          headers,
-          body: formBody({
-            token,
-            channel: targetChannelId,
-            ts: msg.ts,
-          }),
-        });
-        const deleteRet = (await deleteRes.json()) as { ok?: boolean };
-        if (deleteRet.ok) totalDeleted++;
+
+      await delay(500);
+      const deleteRes = await fetch(`https://${workspace}/api/chat.delete`, {
+        method: "POST",
+        headers,
+        body: formBody({
+          token,
+          channel: targetChannelId,
+          ts: msg.ts,
+        }),
+      });
+      const deleteRet = (await deleteRes.json()) as { ok?: boolean; error?: string };
+      if (deleteRet.ok) {
+        totalDeleted++;
+        consecutiveFailures = 0;
+      } else {
+        consecutiveFailures++;
+        if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
+          stoppedDueToRateLimit = true;
+          break;
+        }
+      }
     }
 
+    if (stoppedDueToRateLimit) break;
     cursor = json.response_metadata?.next_cursor ?? "";
   } while (cursor);
+
+  if (stoppedDueToRateLimit) {
+    return NextResponse.json(
+      {
+        error: "Rate limited. Please try again.",
+        totalDeleted,
+      },
+      { status: 429 }
+    );
+  }
 
   return NextResponse.json({ totalDeleted });
 }
